@@ -1,0 +1,87 @@
+
+/* Colors:
+    #2F2933 - dark navy
+    #01A2A6 - sea green
+    #29D9C2 - aqua
+    #BDF271 - grass
+    #FFFFA6 - sand
+
+    #DDDCC5 - light grey
+    #958976 - grey
+    #611427 - maroon
+    #1D2326 - dark
+    #6A6A61 - blue grey
+*/
+
+* {
+    /*border: dotted blue;*/
+}
+
+body {
+    background-color: #DDDCC5;
+}
+
+body * {
+    color: #DDDCC5;
+    font-family: "Lucida Sans", sans-serif;
+}
+
+#page {
+    width: 600px;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #611427;
+}
+
+h1 {
+    text-align: center
+}
+
+#menu {
+    margin: 0 auto;
+    padding: 0 0 10px 0;
+    border-bottom: #1D2326 solid;
+    text-align: center;
+}
+
+#menu li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+    position: relative;
+    border-radius: 50%;
+    background-color: #1D2326;
+    width: 110px;
+    height: 110px;
+    line-height: 110px;
+    margin: 50px 0px;
+}
+
+#menu a:nth-child(1) li {
+    top: -50px;
+}
+
+#menu a:nth-child(2) li {
+    top: 0px;
+}
+
+#menu a:nth-child(3) li {
+    top: 50px;
+}
+
+#menu a:nth-child(4) li {
+    top: 0px;
+}
+
+#menu a:nth-child(5) li {
+    top: -50px;
+}
+
+#menu li:hover {
+    background-color: #4D4346
+}
+
+#content {
+    margin: 5px;
+    padding: 5px;
+}
