@@ -6,18 +6,18 @@
         <title>Jesse Eedrah - Dev Academy</title>
     </head>
     <body>
-        <div id="page">
+        <div class="page">
             <h1>Technical blog</h1>
-            <ul id="menu">
+            <ul class="menu">
                 <a href="/EDA/blog/cultural_blog.html"><li>Cultural blog</li></a>
                 <a href="/EDA/blog/technical_blog.html"><li>Technical blog</li></a>
                 <a href="http://github.com/eedrah"><li>Projects</li></a>
                 <a href="#"><li>About me</li></a>
                 <a href="#"><li>Contact</li></a>
             </ul>
-            <div id="content">
-                <h2></h2>
-                <p class="date">2014-11-23</p>
+            <div class="content">
+                <h2><a id="2014-11-25" href="#2014-11-25">CSS positioning</a></h2>
+                <p class="date">2014-11-25</p>
                 <p>This week's material started us on basic HTML and CSS. I'd like to talk about a subject that I have been struggling with during this week: static, relative, absolute and fixed positioning. What are the differences between them?</p>
 
                 <h3>Static</h3>
@@ -30,17 +30,21 @@
                 <h3>Absolute</h3>
                 <p>When an element is positioned as 'absolute' it is removed from the normal flow of the document. It doesn't take up any space and all the other 'static' and 'relative' elements can be placed where it would otherwise have been.</p>
                 <p>Instead, it is positioned in reference to its first parent element that is not positioned as 'static'; and to &lt;html&gt; if all its parents are static. It then consults the 'top', 'left', 'bottom' and 'right' properties to place the element at the specified place from that parent.</p>
-                <p>For example, to place an element at the bottom of an empty page you can set it to 'position: absolute' and 'bottom: 0'.
+                <p>For example, to place an element at the bottom of an empty page you can set it to 'position: absolute' and 'bottom: 0'. (Note: this is an example and not the best way to do this. This way the footer element will overlap some body content at the bottom of the page. See [Ryan Fait's Sticky Footer](http://ryanfait.com/sticky-footer/) for a better way.)</p>
+                <p>Arguably, the real power of absolute positioning is in its powerful combos. A common one is to create two divs, one inside the other, making the outer div 'position: relative' and the inner div 'position: absolute' and 'top: 0', 'right': 0'. This will enable the inner div to always be positioned at the top right corner of the outer div while at the same time the outer div is free to grow and shrink to fit its contents. This is perfect for something like an exit button!</p>
 
                 <h3>Fixed</h3>
+                <p>The fourth and last position an element can have is 'fixed'. Like 'absolute', 'fixed' removes the element from the normal flow of the document. It then repositions it relative to the browser window. For example, if an element was positioned 'top: 0' and 'right: 0' then it would always remain in the top right of the browser, regardless of where the user scrolls on the page. Care must be taken that this element does not cover up other information intended for the user. The 'z-order' is also important to consider here.</p>
+                <p>It seems like a lot of care needs to be taken to use fixed positioning, but it can produce quite a striking effect when used correctly.</p>
 
                 <h3>Inherit and Initial</h3>
+                <p>Two more options are valid when setting the position, but they are not positions in themselves. 'inherit' tells the browser to set the position to the same as the parent element. 'initial' sets the position to the default - but this is always 'static' so 'initial' is probably better left unused in favour of 'static'.</p>
 
-                <p id="signature">Eedrah.</p>
+                <p class="signature">Eedrah.</p>
 
-                <h2>Hello tech world! - and git</h2>
+                <h2><a id="2014-11-15" href="#2014-11-15">Hello tech world! - and git</a></h2>
                 
-                <p id="date">2014-11-15</p>
+                <p class="date">2014-11-15</p>
                 
                 <p>I've now reached the end of the first week of material for Dev Academy. This, I imagine, will be the first of many posts about what we are learning on the course.</p>
 
@@ -52,7 +56,7 @@
 
                 <p>That's week 1 for now - we'll be back for week 2!</p>
 
-                <p id="signature">Eedrah.</p>
+                <p class="signature">Eedrah.</p>
 
             </div>
         </div>

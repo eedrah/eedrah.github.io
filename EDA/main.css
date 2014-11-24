@@ -22,7 +22,7 @@ body * {
     font-family: "Lucida Sans", sans-serif;
 }
 
-#page {
+.page {
     width: 600px;
     margin: 0 auto;
     padding: 5px;
@@ -33,14 +33,14 @@ h1 {
     text-align: center
 }
 
-#menu {
+.menu {
     margin: 0 auto;
     padding: 0 0 10px 0;
     border-bottom: #1D2326 solid;
     text-align: center;
 }
 
-#menu li {
+.menu li {
     display: inline-block;
     text-align: center;
     vertical-align: center;
@@ -53,17 +53,17 @@ h1 {
     margin: 50px 0px;
 }
 
-#menu a:nth-child(1) li {top: -50px;}
-#menu a:nth-child(2) li {top: 0px;}
-#menu a:nth-child(3) li {top: 50px;}
-#menu a:nth-child(4) li {top: 0px;}
-#menu a:nth-child(5) li {top: -50px;}
+.menu a:nth-child(1) li {top: -50px;}
+.menu a:nth-child(2) li {top: 0px;}
+.menu a:nth-child(3) li {top: 50px;}
+.menu a:nth-child(4) li {top: 0px;}
+.menu a:nth-child(5) li {top: -50px;}
 
-#menu li:hover {
+.menu li:hover {
     background-color: #4D4346
 }
 
-#content {
+.content {
     margin: 5px;
     padding: 5px;
 }
@@ -71,19 +71,24 @@ h1 {
 h2 {
     text-align: center;
     margin-bottom: 5px;
+    border-top: #1D2326 solid;
 }
 
-#content #date {
+h2:first-of-type {
+    border-top: none;
+}
+
+.content .date {
     margin-top: 0;
     font-style: italic;
     text-align: center;
 }
 
-#content > p {
+.content > p {
     text-align: justify;
 }
 
-#content #signature {
+.content .signature {
     font-style: italic;
     text-align: center;
 }
