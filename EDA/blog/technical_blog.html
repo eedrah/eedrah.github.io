@@ -28,6 +28,9 @@
                 <p>Relative elements also serve as a reference point to absolute elements that are its children. Speaking of which...</p>
 
                 <h3>Absolute</h3>
+                <p>When an element is positioned as 'absolute' it is removed from the normal flow of the document. It doesn't take up any space and all the other 'static' and 'relative' elements can be placed where it would otherwise have been.</p>
+                <p>Instead, it is positioned in reference to its first parent element that is not positioned as 'static'; and to &lt;html&gt; if all its parents are static. It then consults the 'top', 'left', 'bottom' and 'right' properties to place the element at the specified place from that parent.</p>
+                <p>For example, to place an element at the bottom of an empty page you can set it to 'position: absolute' and 'bottom: 0'.
 
                 <h3>Fixed</h3>
 
