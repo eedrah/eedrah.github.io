@@ -20,6 +20,7 @@ body {
 body * {
     color: #DDDCC5;
     font-family: "Lucida Sans", sans-serif;
+    text-shadow: 2px 2px 5px #222222;
 }
 
 .page {
@@ -27,16 +28,16 @@ body * {
     margin: 0 auto;
     padding: 5px;
     background-color: #611427;
+    box-shadow: 5px 5px 20px #888888;
 }
 
 h1 {
-    text-align: center
+    text-align: center;
 }
 
 .menu {
     margin: 0 auto;
     padding: 0 0 10px 0;
-    border-bottom: #1D2326 solid;
     text-align: center;
 }
 
@@ -51,6 +52,7 @@ h1 {
     height: 110px;
     line-height: 110px;
     margin: 50px 0px;
+    box-shadow: 2px 2px 5px #222222;
 }
 
 .menu a:nth-child(1) li {top: -50px;}
@@ -70,12 +72,9 @@ h1 {
 
 h2 {
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 0.5em;
     border-top: #1D2326 solid;
-}
-
-h2:first-of-type {
-    border-top: none;
+    padding-top: 1em;
 }
 
 .content .date {
