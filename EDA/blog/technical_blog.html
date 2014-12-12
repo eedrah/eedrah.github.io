@@ -16,6 +16,108 @@
                 <a href="#"><li>Contact</li></a>
             </ul>
             <div class="content">
+
+<div class='csharpcode'>Code:<pre style='border:1px dashed #CCCCCC;overflow-x:auto;overflow-y:hidden;background:#f0f0f0;padding:0px;color:#000000;text-align:left;line-height20px;color:#000000;word-wrap:normal;'><span class='keyword'>using</span> System;
+
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>BadDie</span> {
+    <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
+        <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
+        <span class='keyword'>return</span> random_generator.Next(6) + 1;
+        }
+    }
+
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>MediocreDie</span> {
+    <span class='keyword'>private</span> <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
+    <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
+        <span class='keyword'>return</span> random_generator.Next(6) + 1;
+        }
+    }
+
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>GoodDie</span> {
+    <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
+    <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
+        <span class='keyword'>return</span> random_generator.Next(6) + 1;
+        }
+    }
+
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>SingletonRandom</span> {
+    <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>readonly</span> <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
+    <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='type'>Random</span> Generator {
+        <span class='keyword'>get</span> {<span class='keyword'>return</span> random_generator; }  <span class='comment'>// Property - so I can return an object using &quot;my_var.Generator&quot; rather than &quot;my_var.Generator()&quot;.</span>
+        }
+    <span class='keyword'>private</span> SingletonRandom(){}  <span class='comment'>// Private constructor so class cannot be instantiated</span>
+    <span class='keyword'>static</span> SingletonRandom(){}  <span class='comment'>// Must be here for eager instantiation, see http://csharpindepth.com/articles/general/BeforeFieldInit.aspx</span>
+    }
+    
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>StarWarsMovies</span> {
+    <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>readonly</span> <span class='keyword'>string</span>[] movies = <span class='keyword'>new</span> <span class='keyword'>string</span>[] {
+        <span class='string'>&quot;Episode I: The Phantom Menace&quot;</span>,
+        <span class='string'>&quot;Episode II: Attack of the Clones&quot;</span>,
+        <span class='string'>&quot;Episode III: Revenge of the Sith&quot;</span>,
+        <span class='string'>&quot;Episode IV: Star Wars&quot;</span>,
+        <span class='string'>&quot;Episode V: The Empire Strikes Back&quot;</span>,
+        <span class='string'>&quot;Episode VI: Return of the Jedi&quot;</span>
+        };
+    <span class='keyword'>public</span> <span class='keyword'>string</span> Random() {
+        <span class='keyword'>return</span> movies[<span class='type'>SingletonRandom</span>.Generator.Next(6)];
+        }
+    }
+
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>BestDie</span> {
+    <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
+        <span class='keyword'>return</span> SingletonRandom.Generator.Next(6) + 1;
+        }
+    }
+
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>Display</span> {
+    <span class='keyword'>public</span> <span class='keyword'>void</span> Main() {
+        
+        <span class='type'>Console</span>.WriteLine(<span class='string'>&quot;BadDie&quot;</span>);
+        
+        <span class='type'>var</span> bad_die = <span class='keyword'>new</span> <span class='type'>BadDie</span>();
+        <span class='type'>Console</span>.WriteLine(bad_die.Roll());
+        <span class='type'>Console</span>.WriteLine(bad_die.Roll());
+        <span class='type'>Console</span>.WriteLine(bad_die.Roll());
+        <span class='type'>Console</span>.WriteLine(bad_die.Roll());
+        
+        <span class='type'>Console</span>.WriteLine(<span class='string'>&quot;MediocreDie&quot;</span>);
+        
+        <span class='type'>var</span> mediocre_die_1 = <span class='keyword'>new</span> <span class='type'>MediocreDie</span>();
+        <span class='type'>var</span> mediocre_die_2 = <span class='keyword'>new</span> <span class='type'>MediocreDie</span>();
+        <span class='type'>Console</span>.WriteLine(mediocre_die_1.Roll());
+        <span class='type'>Console</span>.WriteLine(mediocre_die_2.Roll());
+        <span class='type'>Console</span>.WriteLine(mediocre_die_1.Roll());
+        <span class='type'>Console</span>.WriteLine(mediocre_die_2.Roll());
+        
+        <span class='type'>Console</span>.WriteLine(<span class='string'>&quot;GoodDie&quot;</span>);
+        
+        <span class='type'>var</span> good_die = <span class='keyword'>new</span> <span class='type'>GoodDie</span>();
+        <span class='type'>Console</span>.WriteLine(good_die.Roll());
+        <span class='type'>Console</span>.WriteLine(good_die.Roll());
+        <span class='type'>Console</span>.WriteLine(good_die.Roll());
+        <span class='type'>Console</span>.WriteLine(good_die.Roll());
+        
+        <span class='type'>Console</span>.WriteLine(<span class='string'>&quot;Random Star Wars movie&quot;</span>);
+        
+        <span class='type'>var</span> star_wars_movies = <span class='keyword'>new</span> <span class='type'>StarWarsMovies</span>();
+        <span class='type'>Console</span>.WriteLine(star_wars_movies.<span class='type'>Random</span>());
+        <span class='type'>Console</span>.WriteLine(star_wars_movies.<span class='type'>Random</span>());
+        <span class='type'>Console</span>.WriteLine(star_wars_movies.<span class='type'>Random</span>());
+        <span class='type'>Console</span>.WriteLine(star_wars_movies.<span class='type'>Random</span>());
+        
+        <span class='type'>Console</span>.WriteLine(<span class='string'>&quot;BestDie&quot;</span>);
+        
+        <span class='type'>var</span> best_die = <span class='keyword'>new</span> <span class='type'>BestDie</span>();
+        <span class='type'>Console</span>.WriteLine(best_die.Roll());
+        <span class='type'>Console</span>.WriteLine(best_die.Roll());
+        <span class='type'>Console</span>.WriteLine(best_die.Roll());
+        <span class='type'>Console</span>.WriteLine(best_die.Roll());
+        
+        }
+    }<!--[if IE]>
+
+<![endif]--></pre></div>
+
                 <h2><a id="2014-12-03" href="#2014-12-03">Basic C# containers</a></h2>
                 <p class="date">2014-12-03</p>
                 <p>We had an introduction to C# in this weeks material. One of the concepts we covered was storing data inside ArrayLists and Hashtables. Boths these data types have the advantage of being able to add items at runtime to the collection. However, their implementation is quite different.</p>
