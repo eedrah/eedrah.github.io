@@ -91,3 +91,28 @@ h2 {
     font-style: italic;
     text-align: center;
 }
+
+/* C# syntax */
+/* From: http://jscsharpformatter.googlecode.com/svn/trunk/publish/csharp.css */
+/* And: http://formatmycsharpcode.blogspot.com */
+.csharpcode, .csharpcode pre
+{
+    font-size: 13.3333px;
+    font-width: 400;
+    color: black;
+    font-family: "Courier New";
+}
+
+.csharpcode pre { margin: 0px; }
+
+.csharpcode .comment { color: #008000; }
+
+.csharpcode .comment2 { color: #808080; }
+
+.csharpcode .type { color: #2B91AF; }
+
+.csharpcode .keyword { color: #0000FF; }
+
+.csharpcode .string { color: #A31515; }
+
+.csharpcode .preproc { color: #0000FF; }
