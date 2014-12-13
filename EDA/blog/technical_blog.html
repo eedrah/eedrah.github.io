@@ -70,7 +70,7 @@
 1
 </pre>
 
-                <p>Success! The first two numbers are different. But look what is happening with the second die. Because this code is running very quickly, the system time when the second die is instantiated has not changed since the first. The random numbers it produces is from the same seed as the first. We need to go deeper.</p>
+                <p>Success! The first two numbers are different. But look what is happening with the second die. Because this code is running very quickly, the system time when the second die is instantiated has not changed since the first. The random numbers it produces is from the same seed as the first. If you used this to play Monopoly you are going to have a lot of people Go Directly to Jail. We need to go deeper.</p>
 
 <pre class='csharpcode'><span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>GoodDie</span> {
     <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
@@ -116,23 +116,27 @@ Episode I: The Phantom Menace
 
                 <p>Oh no, not only does it look like we have to watch The Phantom Menace twice, but it appears that our <em>GoodDie</em> managed to use the same random numbers as our movie picker.</p>
 
+                <p>It's no surprise that this last class suffers from the same problem as all the others, only in a different form. You might have noticed that so far all classes have picked the same random numbers initially - 4, then 1. This is because I ran all the test code at the same time. My code ran in less than 15 milliseconds, and that wasn't enough to make the system time change. As the <em>Random</em> class is seeded from <em>Environment.TickCount</em> all the numbers were the same.</p>
+
+                <p>A solution to this problem (but not the only one) is to ensure that all the random numbers in your program are coming from the same instance of the <em>Random</em> class. The <a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton design pattern</a> is a way to ensure that only one object of a particular class exists. This can solve our randomness problem.</p>
+
 <pre class='csharpcode'><span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>SingletonRandom</span> {
     <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>readonly</span> <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
-    <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='type'>Random</span> Generator {
-        <span class='keyword'>get</span> {<span class='keyword'>return</span> random_generator; }  <span class='comment'>// Property - so I can return an object using &quot;my_var.Generator&quot; rather than &quot;my_var.Generator()&quot;.</span>
-        }
     <span class='keyword'>private</span> SingletonRandom(){}  <span class='comment'>// Private constructor so class cannot be instantiated</span>
+    <span class='keyword'>public</span> <span class='keyword'>static</span> <span class='type'>Random</span> Generator {
+        <span class='keyword'>get</span> {<span class='keyword'>return</span> random_generator; }  <span class='comment'>// Property - a get accessor for best practice and future expansion.</span>
+        }
     <span class='keyword'>static</span> SingletonRandom(){}  <span class='comment'>// Must be here for eager instantiation, see http://csharpindepth.com/articles/general/BeforeFieldInit.aspx</span>
     }
 </pre>
+
+                <p>The first line in this class creates a Random object that will be the unique instance for all our code. We set it to private and readonly so that other code cannot see or alter it, and set it to static as this object belongs to the class itself, not an instance of the class. The second line is the constructor for the class. Because it is set to private this means the user cannot instantiate the class.</p>
+
+                <p>So what can the user do? The only thing that is possible, found in the third line, is to ask the class for the unique random number generator. There is no possible way to create another or 'reset the counter'; thus, it is a Singleton.</p>
+
+                <p>Instead of using the <em>Random</em> class, we can have our entire codebase requesting the Singleton for their random numbers:</p>
     
 <pre class='csharpcode'>
-<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>BestDie</span> {
-    <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
-        <span class='keyword'>return</span> SingletonRandom.Generator.Next(6) + 1;
-        }
-    }
-
 <span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>StarWarsMovies</span> {
     <span class='keyword'>private</span> <span class='keyword'>static</span> <span class='keyword'>readonly</span> <span class='keyword'>string</span>[] movies = <span class='keyword'>new</span> <span class='keyword'>string</span>[] {
         <span class='string'>&quot;Episode I: The Phantom Menace&quot;</span>,
@@ -146,8 +150,13 @@ Episode I: The Phantom Menace
         <span class='keyword'>return</span> movies[<span class='type'>SingletonRandom</span>.Generator.Next(6)];
         }
     }
-</pre>
 
+<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>BestDie</span> {
+    <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
+        <span class='keyword'>return</span> <span class='type'>SingletonRandom</span>.Generator.Next(6) + 1;
+        }
+    }
+</pre>
 
 <pre class='csharpcode'>
 <span class='type'>var</span> star_wars_movies = <span class='keyword'>new</span> <span class='type'>StarWarsMovies</span>();
@@ -155,14 +164,25 @@ Episode I: The Phantom Menace
 <span class='type'>Console</span>.WriteLine(star_wars_movies.Random());
 <span class='type'>Console</span>.WriteLine(star_wars_movies.Random());
 <span class='type'>Console</span>.WriteLine(star_wars_movies.Random());
-</pre>
-<pre class='csharpcode'>
 <span class='type'>var</span> best_die = <span class='keyword'>new</span> <span class='type'>BestDie</span>();
 <span class='type'>Console</span>.WriteLine(best_die.Roll());
 <span class='type'>Console</span>.WriteLine(best_die.Roll());
 <span class='type'>Console</span>.WriteLine(best_die.Roll());
 <span class='type'>Console</span>.WriteLine(best_die.Roll());
 </pre>
+
+<pre class='console'>
+Episode IV: Star Wars
+Episode I: The Phantom Menace
+Episode III: Revenge of the Sith
+Episode I: The Phantom Menace
+4
+5
+1
+3
+</pre>
+
+                <p>Great! All classes that use the Singleton are independent. We still have to watch The Phantom Menace twice, but at least our die isn't predicting our doom.</p>
 
                 <p class="signature">Eedrah.</p>
 
