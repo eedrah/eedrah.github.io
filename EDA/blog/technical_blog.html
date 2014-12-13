@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta content="text/html; charset=unicode" http-equiv="Content-Type" />
-        <link type="text/css" rel="stylesheet" href="/EDA/main.css" />
+        <link type="text/css" rel="stylesheet" href="../main.css" />
         <title>Jesse Eedrah - Dev Academy</title>
     </head>
     <body>
@@ -16,17 +16,27 @@
                 <a href="#"><li>Contact</li></a>
             </ul>
             <div class="content">
+                <h2><a id="2014-12-13" href="#2014-12-13">Random numbers and a bit of Singleton</a></h2>
+                <p class="date">2014-12-13</p>
 
-<div class='csharpcode'>Code:<pre style='border:1px dashed #CCCCCC;overflow-x:auto;overflow-y:hidden;background:#f0f0f0;padding:0px;color:#000000;text-align:left;line-height20px;color:#000000;word-wrap:normal;'><span class='keyword'>using</span> System;
+                <p>I thought I'd touch a bit on generating random numbers in C#. Probably the simplest class one could use is the Random class. It would be a simple exercise to create a 6-sided die.</p>
 
-<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>BadDie</span> {
+                <pre class='csharpcode'><span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>BadDie</span> {
     <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
         <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
         <span class='keyword'>return</span> random_generator.Next(6) + 1;
         }
-    }
+    }</pre>
+                <p>Let's examine the output of the subtly named 'BadDie':</p>
+                <pre class='csharpcode'>
+<span class='type'>var</span> bad_die = <span class='keyword'>new</span> <span class='type'>BadDie</span>();
+<span class='type'>Console</span>.WriteLine(bad_die.Roll());
+<span class='type'>Console</span>.WriteLine(bad_die.Roll());
+<span class='type'>Console</span>.WriteLine(bad_die.Roll());
+<span class='type'>Console</span>.WriteLine(bad_die.Roll());</pre>
+                <pre class='console'>test</pre>
 
-<span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>MediocreDie</span> {
+<pre class='csharpcode'><span class='keyword'>public</span> <span class='keyword'>class</span> <span class='type'>MediocreDie</span> {
     <span class='keyword'>private</span> <span class='type'>Random</span> random_generator = <span class='keyword'>new</span> <span class='type'>Random</span>();
     <span class='keyword'>public</span> <span class='keyword'>int</span> Roll() {
         <span class='keyword'>return</span> random_generator.Next(6) + 1;
@@ -114,9 +124,9 @@
         <span class='type'>Console</span>.WriteLine(best_die.Roll());
         
         }
-    }<!--[if IE]>
+    }</pre>
 
-<![endif]--></pre></div>
+                <p class="signature">Eedrah.</p>
 
                 <h2><a id="2014-12-03" href="#2014-12-03">Basic C# containers</a></h2>
                 <p class="date">2014-12-03</p>
