@@ -15,12 +15,12 @@
 
 body {
     background-color: #DDDCC5;
+    font-family: "Lucida Sans", sans-serif;
+    text-shadow: 1px 1px 3px #222222;
 }
 
-body * {
+body, a {
     color: #DDDCC5;
-    font-family: "Lucida Sans", sans-serif;
-    text-shadow: 2px 2px 5px #222222;
 }
 
 .page {
@@ -90,4 +90,39 @@ h2 {
 .content .signature {
     font-style: italic;
     text-align: center;
+}
+
+/* C# syntax */
+/* Modified from: http://jscsharpformatter.googlecode.com/svn/trunk/publish/csharp.css */
+/* And: http://formatmycsharpcode.blogspot.com */
+pre {
+    text-shadow: none;
+    font-family: "Courier New";
+    font-size: 0.9em;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.2em;
+    box-shadow: 2px 2px 5px #222222;
+}
+
+.csharpcode {
+    color: black;
+    background-color: #e8e8e8;
+}
+
+.csharpcode .comment { color: #008000; }
+
+.csharpcode .comment2 { color: #808080; }
+
+.csharpcode .type { color: #2B91AF; }
+
+.csharpcode .keyword { color: #0000FF; }
+
+.csharpcode .string { color: #A31515; }
+
+.csharpcode .preproc { color: #0000FF; }
+
+.console {
+    color: #e8e8e8;
+    background-color: black;
 }
