@@ -10,10 +10,14 @@ html, body {
 
 ul {
     margin: 0;
+    padding: 0;
+    border: 0;
+
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    
     list-style: none;
     text-align: center;
 }
