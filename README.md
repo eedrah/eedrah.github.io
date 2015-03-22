@@ -1,4 +1,4 @@
 eedrah.github.io
 ================
 
-EDA phase 0 github pages site
+The site that connects the dots...
