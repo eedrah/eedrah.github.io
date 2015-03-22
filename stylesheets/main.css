@@ -20,6 +20,7 @@ ul {
     transform: translateY(-50%);
     
     list-style: none;
+    overflow: hidden;
 }
 
 a {
