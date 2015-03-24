@@ -13,7 +13,8 @@ ul {
     padding: 0;
     border: 0;
 
-    width: 60%;
+    width: 350px;
+    min-width: 350px;
     
     list-style: none;
 }
