@@ -6,15 +6,23 @@ function run(){
 }
 
 function bindSliders(){
-    $('li').hover(showText, hideText);
+    $('a').hover(showText, hideText);
+    $('a').click(checkIfOpen);
+};
+
+function checkIfOpen(evnt){
+    if($(evnt.currentTarget).children().first().width() == 0){
+        evnt.preventDefault();
+        showText(evnt);
+    };
 };
 
 function showText(evnt){
-    $(evnt.currentTarget).children().first().children().first().slideOut(400);
+    $(evnt.currentTarget).children().first().slideOut(400);
 };
 
 function hideText(evnt){
-    $(evnt.currentTarget).children().first().children().first().slideIn(400);
+    $(evnt.currentTarget).children().first().slideIn(400);
 };
 
 function createJqueryAnimations(){
