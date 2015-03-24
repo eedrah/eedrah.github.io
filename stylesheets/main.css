@@ -14,13 +14,8 @@ ul {
     border: 0;
 
     width: 60%;
-
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
     
     list-style: none;
-    overflow: hidden;
 }
 
 a {
@@ -41,4 +36,8 @@ img {
 h3 {
     display: inline-block;
     vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+
+    max-width: 0;
 }

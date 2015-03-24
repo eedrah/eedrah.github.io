@@ -6,36 +6,29 @@ function run(){
 }
 
 function bindSliders(){
-    $('h3').each(initiallyHideText);
     $('li').hover(showText, hideText);
 };
 
-function initiallyHideText(){
-    var $this = $(this);
-    var marginLeft = -$this.outerWidth();
-    $this.css('marginLeft', marginLeft);
-};
-
 function showText(evnt){
-    console.log('show');
-    $(evnt.currentTarget).children().first().children().first().blindLeftIn(200);
+    $(evnt.currentTarget).children().first().children().first().slideOut(400);
 };
 
 function hideText(evnt){
-    console.log('hide');
-    $(evnt.currentTarget).children().first().children().first().blindLeftOut(200);
+    $(evnt.currentTarget).children().first().children().first().slideIn(400);
 };
 
 function createJqueryAnimations(){
-    jQuery.fn.blindLeftOut = function (duration, easing, complete) {
+    jQuery.fn.slideOut = function (duration, easing, complete) {
         return this.animate({
-            marginLeft: -this.outerWidth()
+            maxWidth: 300,
+            paddingRight: '10px'
         }, jQuery.speed(duration, easing, complete));
     };
 
-    jQuery.fn.blindLeftIn = function (duration, easing, complete) {
+    jQuery.fn.slideIn = function (duration, easing, complete) {
         return this.animate({
-            marginLeft: 0
+            maxWidth: 0,
+            paddingRight: 0,
         }, jQuery.speed(duration, easing, complete));
     };
 };
