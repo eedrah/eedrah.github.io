@@ -5,21 +5,18 @@ html, body {
     height: 100%;
 
     font-family: "Open Sans", sans-serif;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 ul {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     border: 0;
 
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 350px;
+    min-width: 350px;
     
     list-style: none;
-    text-align: center;
 }
 
 a {
@@ -27,6 +24,21 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    text-decoration: underline;
+img {
+    height: 100px;
+    width: 100px;
+    vertical-align: middle;
+
+    border: 1px solid black;
+    padding: 2px;
+    background: grey;
+}
+
+h3 {
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+
+    max-width: 0;
 }
