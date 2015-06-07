@@ -21,6 +21,46 @@ section div, section#links, section#top, section#likeable-things, section#footer
     background-color: #ff6a00;
 }
 
+body {
+    text-align: center;
+}
+
+#projects, #likeable-things {
+    > div {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+#projects {
+    div:first-child h2 {
+        text-align: center;
+    }
+
+    > div:nth-of-type(2n+2) {
+        text-align: left;
+
+        img {
+            float: left;
+        }
+    }
+
+    > div:nth-of-type(2n+1) {
+        text-align: right;
+
+        img {
+            float: right;
+        }
+    }
+
+    img {
+        border: 1px solid black;
+        padding: 2px;
+        background: grey;
+        margin: 10px;
+    }
+}
+
 ///* Everything but the jumbotron gets side spacing for mobile first views */
 //.header,
 //.footer {
