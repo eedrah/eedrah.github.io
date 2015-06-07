@@ -25,7 +25,14 @@ body {
     text-align: center;
 }
 
-#projects, #likeable-things {
+.github-logo {
+    height: 80px;
+}
+.linkedin-logo {
+    height: 44px;
+}
+
+#projects, #likeable-things, #links {
     > div {
         padding-top: 30px;
         padding-bottom: 30px;
