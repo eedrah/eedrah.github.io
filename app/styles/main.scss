@@ -11,18 +11,54 @@ $icon-font-path: '../fonts/';
     padding: 0.2em 0;
 }
 
-/* Space out content a bit */
-/*body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}*/
+$dark: #222;
+$light: #eeeeee;
+$colorA: #2C3E50;
+$colorB: #336E7B;
+$colorC: #3A539B;
+$colorD: #9BC9F0;
 
-section div, section#links, section#top, section#likeable-things, section#footer {
-    background-color: #ff6a00;
+.title {
+    background-color: $dark;
+    color: $light;
 }
 
+section#links {
+    background-color: $colorD;
+}
+
+section#projects > div:nth-child(2n+2) {
+    background-color: $colorA;
+}
+section#projects > div:nth-child(4n+3) {
+    background-color: $colorB;
+}
+section#projects > div:nth-child(4n+5) {
+    background-color: $colorC;
+}
+
+section#likeable-things > div:nth-child(2) {
+    background-color:$colorA;
+    li {
+        padding: 30px;
+    }
+}
+
+section#footer {
+    @extend .title;
+    padding-top: 20px;
+}
+
+@mixin default-text-color() {
+    color: $light;
+    text-shadow: 0.5px 0.5px 1px $dark;
+}
 body {
     text-align: center;
+    @include default-text-color;
+}
+a, a:hover { 
+    @include default-text-color;
 }
 
 .github-logo {
@@ -32,7 +68,7 @@ body {
     height: 44px;
 }
 
-#projects, #likeable-things, #links {
+#top, #projects, #likeable-things, #links {
     > div {
         padding-top: 30px;
         padding-bottom: 30px;
@@ -67,64 +103,3 @@ body {
         margin: 10px;
     }
 }
-
-///* Everything but the jumbotron gets side spacing for mobile first views */
-//.header,
-//.footer {
-//  padding-left: 15px;
-//  padding-right: 15px;
-//}
-//
-/* Custom page header */
-//.header {
-//    border-bottom: 1px solid #e5e5e5;
-//    /* Make the masthead heading the same height as the navigation */
-//    h3 {
-//        margin-top: 0;
-//        margin-bottom: 0;
-//        line-height: 40px;
-//        padding-bottom: 19px;
-//    }
-//}
-
-/* Custom page footer */
-.footer {
-    padding-top: 19px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-}
-
-///* Main marketing message and sign up button */
-//.jumbotron {
-//  text-align: center;
-//  border-bottom: 1px solid #e5e5e5;
-//  .btn {
-//    font-size: 21px;
-//    padding: 14px 24px;
-//  }
-//}
-//
-///* Responsive: Portrait tablets and up */
-//@media screen and (min-width: 768px) {
-//  .container {
-//    max-width: 730px;
-//  }
-//
-//  /* Remove the padding we set earlier */
-//  .header,
-//  .footer {
-//    padding-left: 0;
-//    padding-right: 0;
-//  }
-//
-//  /* Space out the masthead */
-//  .header {
-//    margin-bottom: 30px;
-//  }
-//
-//  /* Remove the bottom border on the jumbotron for visual effect */
-//  .jumbotron {
-//    border-bottom: 0;
-//  }
-//}
-//
