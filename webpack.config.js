@@ -4,8 +4,7 @@ module.exports = {
   entry: './eedrah.github.io-source/index.js',
   output: {
     path: './',
-    filename: 'bundle.js',
-    publicPath: undefined
+    filename: 'bundle.js'
   },
   loaders: [
     {
@@ -24,8 +23,11 @@ module.exports = {
       query: { limit: 8192 }
     }
   ],
-  plugins: [new HtmlWebpackPlugin({
-    title: 'Eedrah',
-    filename: '404.html'
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Eedrah',
+      filename: '404.html'
+    })
+  ],
+  progress: true
 }
