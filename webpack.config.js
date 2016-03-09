@@ -24,8 +24,12 @@ module.exports = {
         query: { limit: 8192 }
       },
       {
-        test: /\.(txt|md)$/,
-        loader: 'file?name=[path][name].[ext]'
+        test: /\/content\/.*/,
+        loader: 'file',
+        query: {
+          name: '[path][name].[ext]',
+          context: 'content'
+        }
       }
     ]
   },
