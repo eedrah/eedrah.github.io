@@ -6,23 +6,29 @@ module.exports = {
     path: './dist/',
     filename: 'bundle.js'
   },
-  loaders: [
-    {
-      test: /\.jsx?/,
-      loaders: [ 'babel' ],
-      include: 'index.js',
-      query: { presets: [ 'es2015' ] }
-    },
-    {
-      test: /\.css$/,
-      loaders: [ 'style', 'css', 'postcss' ]
-    },
-    {
-      test: /\.(png|jpg)$/,
-      loaders: [ 'url' ],
-      query: { limit: 8192 }
-    }
-  ],
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?/,
+        loaders: [ 'babel' ],
+        include: 'index.js',
+        query: { presets: [ 'es2015' ] }
+      },
+      {
+        test: /\.css$/,
+        loaders: [ 'style', 'css', 'postcss' ]
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loaders: [ 'url' ],
+        query: { limit: 8192 }
+      },
+      {
+        test: /\.(txt|md)$/,
+        loader: 'file?name=[path][name].[ext]'
+      }
+    ]
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Eedrah',
