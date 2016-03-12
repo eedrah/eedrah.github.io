@@ -7,6 +7,9 @@
     "start": "npm run build",
     "prebuild": "rm -rf dist && cp -a content dist",
     "build": "webpack --config webpack.config.prod.js",
+    "predeploy": "npm run build && git add dist && git commit -m 'deploy'",
+    "deploy": "git subtree push -P dist origin master",
+    "postdeploy": "git reset head^",
     "dev": "webpack --config webpack.config.dev.js",
     "live": "webpack-dev-server --config webpack.config.dev.js --inline --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
