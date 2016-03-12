@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
+    "prebuild": "rm -rf dist && cp -a content dist",
     "build": "webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js",
     "live": "webpack-dev-server --config webpack.config.dev.js --inline --hot",

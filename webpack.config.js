@@ -22,14 +22,6 @@ module.exports = {
         test: /\.(png|jpg)$/,
         loaders: [ 'url' ],
         query: { limit: 8192 }
-      },
-      {
-        test: /\/content\/.*/,
-        loader: 'file',
-        query: {
-          name: '[path][name].[ext]',
-          context: 'content'
-        }
       }
     ]
   },
