@@ -1,9 +1,9 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './eedrah.github.io-source/index.js',
+  entry: './src/index.js',
   output: {
-    path: './',
+    path: './dist/',
     filename: 'bundle.js'
   },
   loaders: [
