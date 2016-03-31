@@ -8,7 +8,7 @@ document.body.appendChild(reactApp)
 render((
   <Router history={browserHistory}>
     <Route path='/' component={require('./App')}>
-      <Route path='test' component={require('./test')} />
+      <Route path='test' component={require('./Testing')} />
     </Route>
   </Router>
 ), reactApp)
