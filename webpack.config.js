@@ -1,5 +1,3 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -25,11 +23,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Eedrah',
-      filename: '404.html'
-    })
-  ],
   progress: true
 }
