@@ -2,6 +2,9 @@ import React from 'react'
 import { render } from 'react-dom'
 import { browserHistory, Router, Route, Redirect } from 'react-router'
 
+var reactApp = document.createElement('div')
+document.body.appendChild(reactApp)
+
 render((
   <Router history={browserHistory}>
     <Route path='/' component={require('./App')}>
@@ -11,4 +14,4 @@ render((
       </Route>
     </Route>
   </Router>
-), document.body)
+), reactApp)
