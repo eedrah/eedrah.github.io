@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build",
-    "clean": "git rm -rf --ignore-unmatch dist",
+    "clean": "rm -rf dist && git rm -rf --ignore-unmatch dist",
     "prebuild": "npm run clean && cp -a content dist",
     "build": "webpack --config webpack.config.prod.js",
     "predeploy": "npm run build && git add dist && git commit -m 'deploy'",
