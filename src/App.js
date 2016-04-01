@@ -7,7 +7,7 @@ class App extends React.Component {
       <div>
         <h1>Eedrah.com</h1>
         <p>Site build in progress (Apr 2016)</p>
-        <Link to='test'>Go to test</Link>
+        <Link to='hello'>Go to test</Link>
         {this.props.children}
       </div>
     )
