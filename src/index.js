@@ -9,7 +9,14 @@ const routes = {
   path: '/',
   component: require('./App'),
   childRoutes: [
-    require('./HelloRoute')
+    {
+      path: 'hello',
+      getComponent: (location, cb) => {
+        require.ensure([], (require) => {
+          cb(null, require('./chunkHelloRepo'))
+        }, 'HelloRepo')
+      }
+    }
   ]
 }
 
