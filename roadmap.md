@@ -1,0 +1,3 @@
+- load routes in another component
+- chunk other component and load dynamically
+- change public path of the chunk to what it would be from the other repo?
