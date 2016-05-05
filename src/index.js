@@ -13,10 +13,9 @@ const routes = {
     {
       path: 'hello',
       getComponent: (location, cb) => {
-        scriptjs('/HelloRepo/main.js', () => {
+        scriptjs('http://eedrah.com/HelloRepo/main.js', () => {
           console.log(HelloRepoVar)
-          debugger
-          cb(HelloRepoVar)
+          cb(null, HelloRepoVar)
         })
       }
     }
