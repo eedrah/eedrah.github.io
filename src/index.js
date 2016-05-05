@@ -6,17 +6,21 @@ var scriptjs = require('scriptjs')
 const reactApp = document.createElement('div')
 document.body.appendChild(reactApp)
 
+var getModule = function (module, callback) {
+  scriptjs(`http://eedrah.com/${module}/main.js`, () => {
+    console.log(window[module + 'Var'])
+    callback(null, window[module + 'Var'])
+  })
+}
+
 const routes = {
   path: '/',
   component: require('./App'),
   childRoutes: [
     {
       path: 'hello',
-      getComponent: (location, cb) => {
-        scriptjs('http://eedrah.com/HelloRepo/main.js', () => {
-          console.log(HelloRepoVar)
-          cb(null, HelloRepoVar)
-        })
+      getComponent: (location, callback) => {
+        getModule('HelloRepo', callback)
       }
     }
   ]
