@@ -1,3 +1,4 @@
+var webpack = require('webpack')
 var merge = require('merge-and-concat')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -13,6 +14,9 @@ module.exports = merge({}, config, {
     aggregateTimeout: 100
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new HtmlWebpackPlugin({
       title: 'Eedrah',
       filename: 'index.html',

@@ -7,7 +7,7 @@
     "start": "npm run build",
     "clean": "rm -rf dist && git rm -rf --ignore-unmatch dist",
     "prebuild": "npm run clean && cp -a content dist",
-    "build": "webpack --config webpack.config.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "remove-placeholders": "find dist -name 'chunk.js' -print0 | xargs -0 rm ",
     "predeploy": "npm run build && npm run remove-placeholders && git add dist && git commit -m 'deploy'",
     "deploy": "git subtree split -P dist | xargs -I % git push -f origin %:master",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/eedrah/eedrah.github.io#readme",
   "dependencies": {
+    "cross-env": "^1.0.7",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-router": "^2.4.0",
