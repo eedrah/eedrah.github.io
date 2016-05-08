@@ -6,8 +6,13 @@ var scriptjs = require('scriptjs')
 const reactApp = document.createElement('div')
 document.body.appendChild(reactApp)
 
+const isProd = process.env.NODE_ENV === 'production'
+
 var getModule = function (module, callback) {
-  scriptjs(`http://eedrah.com/${module}/main.js`, () => {
+  const address = isProd
+    ? `http://eedrah.com/${module}/main.js`
+    : 'http://localhost:8080/main.js'
+  scriptjs(address, () => {
     console.log(window[module + 'Var'])
     callback(null, window[module + 'Var'])
   })
