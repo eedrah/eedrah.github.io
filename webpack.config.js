@@ -1,16 +1,26 @@
+var path = require('path')
+var BellOnBundlerErrorPlugin = require('bell-on-bundler-error-plugin')
+var UnusedFilesWebpackPlugin = require("unused-files-webpack-plugin").default
+
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(__dirname, 'src/index.js'),
   output: {
-    path: './dist/',
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loader: "eslint-loader",
+        exclude: /node_modules/
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?/,
-        loader: 'babel',
-        exclude: /node_modules/,
-        query: { presets: [ 'es2015', 'react' ] }
+        loaders: ["react-hot", "babel?presets[]=react&presets[]=es2015"],
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -23,5 +33,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new UnusedFilesWebpackPlugin({
+        pattern: 'src/**/*.*'
+    }),
+    new BellOnBundlerErrorPlugin()
+  ],
   progress: true
 }

@@ -9,7 +9,8 @@ module.exports = merge({}, config, {
     pathinfo: true
   },
   debug: true,
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
+  // devtool: 'inline-source-map',
   watchOptions: {
     aggregateTimeout: 100
   },
