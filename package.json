@@ -9,9 +9,9 @@
     "dist-static-content": "mkdirp content && ncp content dist",
     "prebuild": "npm run clean && npm run dist-static-content",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "predeploy": "npm run build && git add dist && git commit -m 'deploy'",
-    "deploy": "git subtree split -P dist | xargs -I % git push -f origin %:master",
-    "postdeploy": "git reset --soft head^ && npm run clean",
+    "predeploy": "npm run build && git add dist && git commit -m deploy",
+    "deploy": "git subtree split -P dist | xargs -I % git push origin +%:refs/heads/master",
+    "postdeploy": "git reset --soft head~1 && npm run clean",
     "dev": "webpack-dev-server --config webpack.config.dev.js --inline --hot --content-base src/ --history-api-fallback --port 8081",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
