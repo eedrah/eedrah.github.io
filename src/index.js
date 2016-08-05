@@ -32,6 +32,11 @@ const routes = {
       path: 'hello',
       getComponent: (location, callback) => getComponent('HelloRepo', callback),
       getChildRoutes: (location, callback) => getChildRoutes('HelloRepo', callback)
+    },
+    {
+      path: 'javascript-quirks-exploits',
+      getComponent: (location, callback) =>
+      getComponent('javascript-quirks-exploits-segment', callback)
     }
   ]
 }
