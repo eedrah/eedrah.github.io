@@ -3,42 +3,46 @@ import { render } from 'react-dom'
 import { browserHistory, Router } from 'react-router'
 const scriptjs = require('scriptjs')
 
-const reactApp = document.createElement('div')
-document.body.appendChild(reactApp)
+import verifyHttps from './fns/verifyHttps'
 
-const isProd = process.env.NODE_ENV === 'production'
+verifyHttps(() => {
+  const reactApp = document.createElement('div')
+  document.body.appendChild(reactApp)
 
-const getModule = function (module, callback) {
-  const address = isProd
-    ? `http://eedrah.com/${module}/main.js`
-    : 'http://localhost:8080/main.js'
-  scriptjs(address, () => {
-    callback(null, window[module])
-  })
-}
+  const isProd = process.env.NODE_ENV === 'production'
 
-const getComponent = function (module, callback) {
-  getModule(module, (err, moduleExport) => callback(null, moduleExport.component))
-}
-const getChildRoutes = function (module, callback) {
-  getModule(module, (err, moduleExport) => callback(null, moduleExport.childRoutes))
-}
+  const getModule = function (module, callback) {
+    const address = isProd
+      ? `http://eedrah.com/${module}/main.js`
+      : 'http://localhost:8080/main.js'
+    scriptjs(address, () => {
+      callback(null, window[module])
+    })
+  }
 
-const routes = {
-  path: '/',
-  component: require('./App'),
-  childRoutes: [
-    {
-      path: 'hello',
-      getComponent: (location, callback) => getComponent('HelloRepo', callback),
-      getChildRoutes: (location, callback) => getChildRoutes('HelloRepo', callback)
-    },
-    {
-      path: 'javascript-quirks-exploits',
-      getComponent: (location, callback) =>
-      getComponent('javascript-quirks-exploits-segment', callback)
-    }
-  ]
-}
+  const getComponent = function (module, callback) {
+    getModule(module, (err, moduleExport) => callback(null, moduleExport.component))
+  }
+  const getChildRoutes = function (module, callback) {
+    getModule(module, (err, moduleExport) => callback(null, moduleExport.childRoutes))
+  }
 
-render((<Router history={browserHistory} routes={routes} />), reactApp)
+  const routes = {
+    path: '/',
+    component: require('./App'),
+    childRoutes: [
+      {
+        path: 'hello',
+        getComponent: (location, callback) => getComponent('HelloRepo', callback),
+        getChildRoutes: (location, callback) => getChildRoutes('HelloRepo', callback)
+      },
+      {
+        path: 'javascript-quirks-exploits',
+        getComponent: (location, callback) =>
+        getComponent('javascript-quirks-exploits-segment', callback)
+      }
+    ]
+  }
+
+  render((<Router history={browserHistory} routes={routes} />), reactApp)
+})
