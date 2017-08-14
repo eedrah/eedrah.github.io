@@ -10,6 +10,7 @@ deploy:
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   on:
-    branch: master
+    branch: develop
   local_dir: dist
+  target_branch: master
 script: npm start
