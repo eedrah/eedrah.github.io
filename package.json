@@ -10,7 +10,7 @@
     "template": "npm-run-all --parallel redirect:*",
     "redirect:index": "echo '{ \"url\": \"https://eedrah.com/alive\" }' | mustache - templates/redirect.mustache > dist/index.html",
     "redirect:404": "echo '{ \"url\": \"https://eedrah.com/alive\" }' | mustache - templates/redirect.mustache > dist/404.html",
-    "redirect:photos": "echo '{ \"url\": \"https://eedrah.com/alive\" }' | mustache - templates/redirect.mustache > dist/photos/index.html",
+    "redirect:photos": "mkdirp dist/photos && echo '{ \"url\": \"https://eedrah.com/alive\" }' | mustache - templates/redirect.mustache > dist/photos/index.html",
     "prebuild": "npm run clean && npm run dist-static-content && npm run template",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "predeploy": "npm run build && git add dist && git commit -m deploy",
