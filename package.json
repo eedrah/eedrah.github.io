@@ -13,7 +13,7 @@
     "redirect:photos": "mkdirp dist/photos && echo '{ \"url\": \"https://goo.gl/photos/N1iY29VoYsTkTxmT7\" }' | mustache - templates/redirect.mustache > dist/photos/index.html",
     "redirect:sergio": "mkdirp dist/sergio && echo '{ \"url\": \"https://goo.gl/photos/diLcnXmJPcjAc4i56\" }' | mustache - templates/redirect.mustache > dist/sergio/index.html",
     "redirect:linkedin": "mkdirp dist/linkedin && echo '{ \"url\": \"http://linkedin.com/pub/jesse-eedrah/b5/62/55b\" }' | mustache - templates/redirect.mustache > dist/linkedin/index.html",
-    "redirect:cv": "mkdirp dist/cv && echo '{ \"url\": \"https://drive.google.com/open?id=0BzuayTHsLrAwMTdEb2Zyb0lwVEE\" }' | mustache - templates/redirect.mustache > dist/cv/index.html",
+    "redirect:cv": "mkdirp dist/cv && echo '{ \"url\": \"https://drive.google.com/open?id=1QUJHACfBzXNgSNyk7Jcr6jHspHxxkFaN\" }' | mustache - templates/redirect.mustache > dist/cv/index.html",
     "prebuild": "npm run clean && npm run dist-static-content && npm run template",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "predeploy": "npm run build && git add dist && git commit -m deploy",
